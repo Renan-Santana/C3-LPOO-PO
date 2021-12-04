@@ -3,30 +3,22 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
+import Archive;
 
 public class App {
-	
-		static ArrayList<Compra> lista = new ArrayList<Compra>() ;
-		static CadCompra cadcompra = new CadCompra(lista);
-		
-		public static void main (String[] args)throws Exception {
-			
-			// TODO Auto-generated method stub
 
-			String file = "D:\\FAESA\\4� SEMESTRE\\Pesquisa e Ordenacao\\trabalho\\compra500alea.txt";
-			String file2 = "D:\\FAESA\\4� SEMESTRE\\Pesquisa e Ordenacao\\trabalho\\testacompra500alea.txt";
-				LeArquivo learquivo = new LeArquivo(file);
-				GravaArquivo gravarquivo = new GravaArquivo(file2);
-				
-					cadcompra.insercaoDireta();				
-	
-					System.out.println(learquivo.Le());
-					gravarquivo.gravaArquivo(file2);		
+	public static void main(String[] args) throws Exception {
 
-					for (String string : args) {
-						
-					}
-					cadcompra.insercaoDireta();
-					System.out.println("___________________________");				
-				}
-			}
+		ArrayList<Compra> lista = new ArrayList<Compra>();
+		CadCompra cadastro = new CadCompra(lista);
+		// READ FILE FINAL
+		try {
+			String file = Archive.Read("C:\\Users\\Renan Santana\\Documents\\C3\\C3-LPOO-PO\\files\\compra500alea.txt", cadastro);
+			System.out.println(file);
+
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+
+	}
+}
