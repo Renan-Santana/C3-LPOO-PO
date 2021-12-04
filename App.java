@@ -1,5 +1,3 @@
-package system;
-
 import java.util.Scanner;
 
 import java.io.FileNotFoundException;
@@ -15,8 +13,8 @@ public class App {
 			
 			// TODO Auto-generated method stub
 
-			String file = "D:\\FAESA\\4° SEMESTRE\\Pesquisa e Ordenacao\\trabalho\\compra500alea.txt";
-			String file2 = "D:\\FAESA\\4° SEMESTRE\\Pesquisa e Ordenacao\\trabalho\\testacompra500alea.txt";
+			String file = "D:\\FAESA\\4ï¿½ SEMESTRE\\Pesquisa e Ordenacao\\trabalho\\compra500alea.txt";
+			String file2 = "D:\\FAESA\\4ï¿½ SEMESTRE\\Pesquisa e Ordenacao\\trabalho\\testacompra500alea.txt";
 				LeArquivo learquivo = new LeArquivo(file);
 				GravaArquivo gravarquivo = new GravaArquivo(file2);
 				

@@ -1,6 +1,3 @@
-package system;
-
-
 public class ClienteEspecial extends Cliente {
     private Double valeCompra;
 

@@ -1,5 +1,3 @@
-package system;
-
 public interface Ordenacao {
 	
 	public void insercaoDireta();
