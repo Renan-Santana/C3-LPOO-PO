@@ -1,11 +1,10 @@
-package system;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Archive {
@@ -38,8 +37,34 @@ public class Archive {
         }
     }
 
-    
-    
+    public static String Read(String path, ArrayList<String> cpfs) {
+        String content = "";
+        try {
+            FileReader archive = new FileReader(path);
+            BufferedReader readArchive = new BufferedReader(archive);
+            String line = "";
+            try {
+                line = readArchive.readLine();
+                while (line != null) {
+                    content += line + "\n";
+                    cpfs.add(line);
+                    line = readArchive.readLine();
+                }
+                archive.close();
+            } catch (IOException e) {
+                content = "Error: Error reading file";
+            }
+        } catch (FileNotFoundException e) {
+            content = "Error: File not found";
+        }
+        if (content.contains("Error")) {
+            System.err.println(content);
+            return "";
+        } else {
+            return content;
+        }
+    }
+
     public static Boolean Write(String path, String content) {
         try {
             FileWriter archive = new FileWriter(path);
@@ -54,9 +79,6 @@ public class Archive {
 
     }
 
-    
-    
-    
     public static Compra separaDados(String linha) throws ArrayIndexOutOfBoundsException, NumberFormatException {
         String[] dados = null;
         String CPF;

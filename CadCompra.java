@@ -35,9 +35,9 @@ public class CadCompra implements Ordenacao, vetor {
 	}
 
 	@Override
-	public void insere(Compra vetCompra) {
+	public void insere(Compra compra) {
 		// TODO Auto-generated method stub
-		this.vetCompra.add(vetCompra);
+		this.vetCompra.add(compra);
 	}
 
 	@Override
