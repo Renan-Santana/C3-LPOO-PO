@@ -3,62 +3,67 @@ import java.util.ArrayList;
 public class Abb {
 	private Noabb raiz;
 	private int nElem;
-	
+
 	public Abb() {
 		this.nElem = 0;
 	}
-	
+
+	public int getNElem() {
+		return this.nElem;
+	}
+
 	public boolean eVazia() {
-		if	(this.raiz == null) {
+		if (this.raiz == null) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
-	
-	
-	public 	Noabb pesquisar(String cpf) {
+
+	public Noabb pesquisar(String cpf) {
 		return pesquisar(cpf, raiz);
 	}
-	
+
 	private Noabb pesquisar(String cpf, Noabb no) {
 		if (cpf == no.getChave()) {
-		}else if(no.getChave().compareTo(cpf)>0) {
+		} else if (no.getChave().compareTo(cpf) > 0) {
 			no = pesquisar(cpf, no.getDir());
-		}else if(no.getChave().compareTo(cpf)<0) {
+		} else if (no.getChave().compareTo(cpf) < 0) {
 			no = pesquisar(cpf, no.getEsq());
-		}return no;
+		}
+		return no;
 	}
-	
-	public ArrayList<Compra> getCompras(String cpf){
+
+	public ArrayList<Compra> getCompras(String cpf) {
 		return pesquisar(cpf, raiz).getCompras();
 	}
-	
+
 	public Noabb inserir(Compra compra) {
 		return inserir(compra, this.raiz);
 	}
-	private Noabb inserir (Compra compra, Noabb no) {
-		if(no == null) {
-			Noabb novo = new Noabb (compra);
+
+	private Noabb inserir(Compra compra, Noabb no) {
+		if (no == null) {
+			Noabb novo = new Noabb(compra);
 			nElem++;
 			return novo;
-		}else {
-			if(compra.getCliente().getCpf().compareTo(no.getChave())<0) {
+		} else {
+			if (compra.getCliente().getCpf().compareTo(no.getChave()) < 0) {
 				no.setEsq(inserir(compra, no.getEsq()));
-			}else if (compra.getCliente().getCpf().compareTo(no.getChave())>0) {
+			} else if (compra.getCliente().getCpf().compareTo(no.getChave()) > 0) {
 				no.setDir(inserir(compra, no.getDir()));
-			}else {
+			} else {
 				no.insereCompra(compra);
 			}
-		}return no;
+		}
+		return no;
 	}
-	
-	
-	
-	public ArrayList<Noabb> fazCamCentral () {
-		ArrayList <Noabb> vetor = new ArrayList<Noabb>(this.nElem);
+
+	public ArrayList<Noabb> fazCamCentral() {
+		ArrayList<Noabb> vetor = new ArrayList<Noabb>(this.nElem);
 		return fazCamCentral(vetor, this.raiz);
 	}
+
 	private ArrayList<Noabb> fazCamCentral(ArrayList<Noabb> vetor, Noabb no) {
 		if (no != null) {
 			vetor = fazCamCentral(vetor, no.getEsq());
@@ -67,18 +72,18 @@ public class Abb {
 		}
 		return vetor;
 	}
-	
+
 	public Abb balancear() {
-			Abb arv = new Abb();
-			ArrayList<Noabb> vetor = fazCamCentral();
-			balancear(vetor, arv, 0, vetor.size()-1);
-			return arv;
+		Abb arv = new Abb();
+		ArrayList<Noabb> vetor = fazCamCentral();
+		balancear(vetor, arv, 0, vetor.size() - 1);
+		return arv;
 	}
-			
+
 	private void balancear(ArrayList<Noabb> vetor, Abb arv, int inicio, int fim) {
 		int meio;
-		if(fim >= inicio) {
-			meio = (inicio + fim)/2;
+		if (fim >= inicio) {
+			meio = (inicio + fim) / 2;
 			arv.inserir(vetor.get(meio).getCompras().get(0));
 		}
 	}

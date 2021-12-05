@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import java.io.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -11,9 +10,9 @@ public class App {
 
 		ArrayList<Compra> lista = new ArrayList<Compra>();
 		CadCompra cadastro = new CadCompra(lista);
-		String path = "C:\\Users\\Renan Santana\\Documents\\C3\\C3-LPOO-PO\\files\\compra500alea.txt";
+		String pathPurchase = "C:\\Users\\menin\\Documents\\Renan-nao excluir essa pasta\\C3-LPOO-PO\\files\\compra500alea.txt";
 
-		loadArchive(cadastro, path);
+		loadArchive(cadastro, pathPurchase);
 		for (Compra compra : cadastro.getVetCompra()) {
 			System.out.println(compra.toString());
 		}
@@ -23,12 +22,15 @@ public class App {
 		balanceAbb(abb);
 
 		ArrayList<String> cpfs = new ArrayList<String>();
-		path = "C:\\Users\\Renan Santana\\Documents\\C3\\C3-LPOO-PO\\files\\compra.txt";
-		loadArchive(cpfs, path);
+
+		String pathCpf = "C:\\Users\\menin\\Documents\\Renan-nao excluir essa pasta\\C3-LPOO-PO\\files\\compra.txt";
+		loadArchive(cpfs, pathCpf);
 
 		for (String string : cpfs) {
 			System.out.println(string);
 		}
+
+		System.out.println(generateArchiveFinal(abb, cadastro));
 
 	}
 
@@ -58,5 +60,23 @@ public class App {
 		abb.balancear();
 	}
 
+	public static String generateArchiveFinal(Abb abb, CadCompra cadastro) {
+		String content = "";
+		for (Compra compra : cadastro.getVetCompra()) {
+			if (abb.pesquisar(compra.getCliente().getCpf()) != null) {
+				content += "\n" + compra.getCliente().getCpf() +
+						"\t" +
+						compra.getCliente().getNome() +
+						"\n" +
+						compra.getData() + ": " + compra.getValor();
+			} else {
+				content += "\n" + compra.getCliente().getCpf() + "\n" + "NÃO HÁ NENHUMA COMPRA COM O CPF";
+			}
+
+			return content;
+		}
+
+		return null;
+	}
 
 }
