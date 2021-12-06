@@ -10,12 +10,13 @@ public class App {
 
 		ArrayList<Compra> lista = new ArrayList<Compra>();
 		CadCompra cadastro = new CadCompra(lista);
-		String pathPurchase = "C:\\Users\\menin\\Documents\\Renan-nao excluir essa pasta\\C3-LPOO-PO\\files\\compra500alea.txt";
+		String pathPurchase = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\compra500alea.txt";
 
 		loadArchive(cadastro, pathPurchase);
-		for (Compra compra : cadastro.getVetCompra()) {
-			System.out.println(compra.toString());
-		}
+		/*
+		 * for (Compra compra : cadastro.getVetCompra()) {
+		 * System.out.println(compra.toString()); }
+		 */
 
 		Abb abb = new Abb();
 		insertAbb(cadastro, abb);
@@ -23,12 +24,12 @@ public class App {
 
 		ArrayList<String> cpfs = new ArrayList<String>();
 
-		String pathCpf = "C:\\Users\\menin\\Documents\\Renan-nao excluir essa pasta\\C3-LPOO-PO\\files\\compra.txt";
+		String pathCpf = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\compra.txt";
 		loadArchive(cpfs, pathCpf);
 
-		for (String string : cpfs) {
-			System.out.println(string);
-		}
+		/*
+		 * for (String string : cpfs) { System.out.println(string); }
+		 */
 
 		System.out.println(generateArchiveFinal(abb, cadastro));
 
@@ -62,21 +63,23 @@ public class App {
 
 	public static String generateArchiveFinal(Abb abb, CadCompra cadastro) {
 		String content = "";
-		for (Compra compra : cadastro.getVetCompra()) {
-			if (abb.pesquisar(compra.getCliente().getCpf()) != null) {
-				content += "\n" + compra.getCliente().getCpf() +
-						"\t" +
-						compra.getCliente().getNome() +
-						"\n" +
-						compra.getData() + ": " + compra.getValor();
-			} else {
-				content += "\n" + compra.getCliente().getCpf() + "\n" + "NÃO HÁ NENHUMA COMPRA COM O CPF";
-			}
+		Noabb nodeAux = new Noabb();
 
-			return content;
+		for (Compra compra : cadastro.getVetCompra()) {
+
+			nodeAux = abb.pesquisar(compra.getCliente().getCpf());
+			content += nodeAux.toString() + "\n";
+
+			/*
+			 * if (abb.pesquisar(compra.getCliente().getCpf()) != null) { content += "\n" +
+			 * compra.getCliente().getCpf() + "\t" + compra.getCliente().getNome() + "\n" +
+			 * compra.getData() + ": " + compra.getValor(); } else { content += "\n" +
+			 * compra.getCliente().getCpf() + "\n" + "NÃO HÁ NENHUMA COMPRA COM O CPF"; }
+			 */
+
 		}
 
-		return null;
+		return content;
 	}
 
 }

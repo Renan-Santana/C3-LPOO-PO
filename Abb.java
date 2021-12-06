@@ -21,16 +21,22 @@ public class Abb {
 	}
 
 	public Noabb pesquisar(String cpf) {
-		return pesquisar(cpf, raiz);
+		return pesquisar(cpf, this.raiz);
 	}
 
 	private Noabb pesquisar(String cpf, Noabb no) {
-		if (cpf == no.getChave()) {
-		} else if (no.getChave().compareTo(cpf) > 0) {
-			no = pesquisar(cpf, no.getDir());
-		} else if (no.getChave().compareTo(cpf) < 0) {
-			no = pesquisar(cpf, no.getEsq());
+		if (eVazia()) {
+			System.out.println("Arvore vazia");
+			return null;
+		} else {
+			if (cpf == no.getChave()) {
+			} else if (no.getChave().compareTo(cpf) > 0) {
+				no = pesquisar(cpf, no.getDir());
+			} else if (no.getChave().compareTo(cpf) < 0) {
+				no = pesquisar(cpf, no.getEsq());
+			}
 		}
+		
 		return no;
 	}
 
