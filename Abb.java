@@ -30,9 +30,9 @@ public class Abb {
 		} else {
 			if (cpf == no.getChave()) {
 				return no;
-			} else if (no.getChave().compareTo(cpf) > 0) {
+			} else if (cpf.compareTo(no.getChave()) > 0) {
 				no = pesquisar(cpf, no.getDir());
-			} else if (no.getChave().compareTo(cpf) < 0) {
+			} else if (cpf.compareTo(no.getChave()) < 0) {
 				no = pesquisar(cpf, no.getEsq());
 			}
 		}

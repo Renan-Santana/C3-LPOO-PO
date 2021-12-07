@@ -14,10 +14,9 @@ public class App {
 
 		loadArchive(cadastro, pathPurchase);
 
-		/*
-		 * for (Compra compra : cadastro.getVetCompra()) {
-		 * System.out.println(compra.toString()); }
-		 */
+//		for (Compra compra : cadastro.getVetCompra()) {
+//			System.out.println(compra.toString());
+//		}
 
 		Abb abb = new Abb();
 
@@ -30,9 +29,9 @@ public class App {
 		String pathCpf = "C:\\Users\\Renan Santana\\Documents\\C3\\C3-LPOO-PO\\files\\compra.txt";
 		loadArchive(cpfs, pathCpf);
 
-		for (String string : cpfs) {
-			System.out.println(string);
-		}
+//		for (String string : cpfs) {
+//			System.out.println(string);
+//		}
 
 		System.out.println(generateArchiveFinal(abb, cadastro));
 
@@ -60,11 +59,9 @@ public class App {
 
 		for (Compra compra : cadastro.getVetCompra()) {
 			abb.inserir(compra);
-			nodeAux = abb.pesquisar(compra.getCliente().getCpf());
-			content += nodeAux.toString() + "\n\n--------------------------------------\n\n";
+
 		}
 
-		System.out.println(content);
 	}
 
 	public static void balanceAbb(Abb abb) {
@@ -76,16 +73,12 @@ public class App {
 		Noabb nodeAux = new Noabb();
 
 		for (Compra compra : cadastro.getVetCompra()) {
-
-			nodeAux = abb.pesquisar(compra.getCliente().getCpf());
-			content += nodeAux.toString() + "\n";
-
-			/*
-			 * if (abb.pesquisar(compra.getCliente().getCpf()) != null) { content += "\n" +
-			 * compra.getCliente().getCpf() + "\t" + compra.getCliente().getNome() + "\n" +
-			 * compra.getData() + ": " + compra.getValor(); } else { content += "\n" +
-			 * compra.getCliente().getCpf() + "\n" + "NÃƒO HÃ� NENHUMA COMPRA COM O CPF"; }
-			 */
+			if (abb.pesquisar(compra.getCliente().getCpf()) != null) {
+				content += "\n\n\n" + compra.getCliente().getCpf() + "\t" + compra.getCliente().getNome() + "\n"
+						+ compra.getDataString() + "  Valor:" + compra.getValor();
+			} else {
+				content += "\n\n\n" + compra.getCliente().getCpf() + "\n" + "NAO HA NENHUMA COMPRA COM O CPF";
+			}
 
 		}
 
