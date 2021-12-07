@@ -10,26 +10,29 @@ public class App {
 
 		ArrayList<Compra> lista = new ArrayList<Compra>();
 		CadCompra cadastro = new CadCompra(lista);
-		String pathPurchase = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\compra500alea.txt";
+		String pathPurchase = "C:\\Users\\Renan Santana\\Documents\\C3\\C3-LPOO-PO\\files\\compra500alea.txt";
 
 		loadArchive(cadastro, pathPurchase);
+
 		/*
 		 * for (Compra compra : cadastro.getVetCompra()) {
 		 * System.out.println(compra.toString()); }
 		 */
 
 		Abb abb = new Abb();
+
 		insertAbb(cadastro, abb);
+
 		balanceAbb(abb);
 
 		ArrayList<String> cpfs = new ArrayList<String>();
 
-		String pathCpf = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\compra.txt";
+		String pathCpf = "C:\\Users\\Renan Santana\\Documents\\C3\\C3-LPOO-PO\\files\\compra.txt";
 		loadArchive(cpfs, pathCpf);
 
-		/*
-		 * for (String string : cpfs) { System.out.println(string); }
-		 */
+		for (String string : cpfs) {
+			System.out.println(string);
+		}
 
 		System.out.println(generateArchiveFinal(abb, cadastro));
 
@@ -52,9 +55,16 @@ public class App {
 	}
 
 	public static void insertAbb(CadCompra cadastro, Abb abb) {
+		String content = "";
+		Noabb nodeAux = new Noabb();
+
 		for (Compra compra : cadastro.getVetCompra()) {
 			abb.inserir(compra);
+			nodeAux = abb.pesquisar(compra.getCliente().getCpf());
+			content += nodeAux.toString() + "\n\n--------------------------------------\n\n";
 		}
+
+		System.out.println(content);
 	}
 
 	public static void balanceAbb(Abb abb) {
@@ -74,7 +84,7 @@ public class App {
 			 * if (abb.pesquisar(compra.getCliente().getCpf()) != null) { content += "\n" +
 			 * compra.getCliente().getCpf() + "\t" + compra.getCliente().getNome() + "\n" +
 			 * compra.getData() + ": " + compra.getValor(); } else { content += "\n" +
-			 * compra.getCliente().getCpf() + "\n" + "NÃO HÁ NENHUMA COMPRA COM O CPF"; }
+			 * compra.getCliente().getCpf() + "\n" + "NÃƒO HÃ� NENHUMA COMPRA COM O CPF"; }
 			 */
 
 		}

@@ -25,18 +25,18 @@ public class Abb {
 	}
 
 	private Noabb pesquisar(String cpf, Noabb no) {
-		if (eVazia()) {
-			System.out.println("Arvore vazia");
+		if (no == null) {
 			return null;
 		} else {
 			if (cpf == no.getChave()) {
+				return no;
 			} else if (no.getChave().compareTo(cpf) > 0) {
 				no = pesquisar(cpf, no.getDir());
 			} else if (no.getChave().compareTo(cpf) < 0) {
 				no = pesquisar(cpf, no.getEsq());
 			}
 		}
-		
+
 		return no;
 	}
 
@@ -44,8 +44,13 @@ public class Abb {
 		return pesquisar(cpf, raiz).getCompras();
 	}
 
-	public Noabb inserir(Compra compra) {
-		return inserir(compra, this.raiz);
+	public void inserir(Compra compra) {
+		Noabb nodeAux = pesquisar(compra.getCliente().getCpf());
+		if (nodeAux == null) {
+			this.raiz = inserir(compra, this.raiz);
+		} else {
+			nodeAux.insereCompra(compra);
+		}
 	}
 
 	private Noabb inserir(Compra compra, Noabb no) {
@@ -58,8 +63,22 @@ public class Abb {
 				no.setEsq(inserir(compra, no.getEsq()));
 			} else if (compra.getCliente().getCpf().compareTo(no.getChave()) > 0) {
 				no.setDir(inserir(compra, no.getDir()));
-			} else {
-				no.insereCompra(compra);
+			}
+		}
+		return no;
+	}
+
+	private Noabb inserir(Noabb novo, Noabb no) {
+		if (no == null) {
+			novo.setDir(null);
+			novo.setEsq(null);
+			nElem++;
+			return novo;
+		} else {
+			if (novo.getChave().compareTo(no.getChave()) < 0) {
+				no.setEsq(inserir(novo, no.getEsq()));
+			} else if (novo.getChave().compareTo(no.getChave()) > 0) {
+				no.setDir(inserir(novo, no.getDir()));
 			}
 		}
 		return no;
@@ -90,7 +109,9 @@ public class Abb {
 		int meio;
 		if (fim >= inicio) {
 			meio = (inicio + fim) / 2;
-			arv.inserir(vetor.get(meio).getCompras().get(0));
+			arv.inserir(vetor.get(meio), this.raiz);
+			balancear(vetor, arv, inicio, meio - 1);
+			balancear(vetor, arv, meio + 1, fim);
 		}
 	}
 }
