@@ -1,5 +1,3 @@
-package repository;
-
 public class Registro {
 
 	

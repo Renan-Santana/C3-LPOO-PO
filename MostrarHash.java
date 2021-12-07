@@ -1,7 +1,4 @@
-package system;
 import java.util.Scanner;
-import repository.MapaHash;
-import repository.Registro;
 
 public class MostrarHash {
 	public static void main(String[] args) {
