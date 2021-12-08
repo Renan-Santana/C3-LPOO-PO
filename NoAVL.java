@@ -1,5 +1,3 @@
-package system;
-
 import java.util.ArrayList;
 
 public class NoAVL {
