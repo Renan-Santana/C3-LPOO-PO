@@ -37,38 +37,6 @@ public class AVL {
 		return no;
 	}
 
-	private NoAVL balancearDir(NoAVL no) {
-		if (this.h)
-			switch (no.getFb()) {
-			case 1:
-				no.setFb((byte) 0);
-				h = false;
-				break;
-			case 0:
-				no.setFb((byte) -1);
-				break;
-			case -1:
-				no = this.rotacaoEsquerda(no);
-			}
-		return no;
-	}
-
-	private NoAVL balancearEsq(NoAVL no) {
-		if (this.h)
-			switch (no.getFb()) {
-			case -1:
-				no.setFb((byte) 0);
-				h = false;
-				break;
-			case 0:
-				no.setFb((byte) -1);
-				break;
-			case 1:
-				no = this.rotacaoDireita(no);
-			}
-		return no;
-	}
-
 	private NoAVL rotacaoDireita(NoAVL no) {
 
 		NoAVL temp1, temp2;
@@ -125,6 +93,38 @@ public class AVL {
 		this.h = false;
 		return no;
 
+	}
+
+	private NoAVL balancearDir(NoAVL no) {
+		if (this.h)
+			switch (no.getFb()) {
+			case 1:
+				no.setFb((byte) 0);
+				h = false;
+				break;
+			case 0:
+				no.setFb((byte) -1);
+				break;
+			case -1:
+				no = this.rotacaoEsquerda(no);
+			}
+		return no;
+	}
+
+	private NoAVL balancearEsq(NoAVL no) {
+		if (this.h)
+			switch (no.getFb()) {
+			case -1:
+				no.setFb((byte) 0);
+				h = false;
+				break;
+			case 0:
+				no.setFb((byte) -1);
+				break;
+			case 1:
+				no = this.rotacaoDireita(no);
+			}
+		return no;
 	}
 
 	public NoAVL pesquisar(String cpf) {
