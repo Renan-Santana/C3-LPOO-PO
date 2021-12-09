@@ -10,29 +10,25 @@ public class AppAVL {
 	public static void main(String[] args) throws Exception {
 
 		ArrayList<String> fileNamesPurchase = new ArrayList<>();
-		fileNamesPurchase.add("compra500ord.txt");
-		fileNamesPurchase.add("compra500inv.txt");
+//		fileNamesPurchase.add("compra500ord.txt");
+//		fileNamesPurchase.add("compra500inv.txt");
 		fileNamesPurchase.add("compra500alea.txt");
-
-		/*
-		 * fileNamesPurchase.add("compra1000ord.txt");
-		 * fileNamesPurchase.add("compra1000inv.txt");
-		 * fileNamesPurchase.add("compra1000alea.txt");
-		 * 
-		 * fileNamesPurchase.add("compra5000ord.txt");
-		 * fileNamesPurchase.add("compra5000inv.txt");
-		 * fileNamesPurchase.add("compra5000alea.txt");
-		 * 
-		 * fileNamesPurchase.add("compra10000ord.txt");
-		 * fileNamesPurchase.add("compra10000inv.txt");
-		 * fileNamesPurchase.add("compra10000alea.txt");
-		 * 
-		 * fileNamesPurchase.add("compra50000ord.txt");
-		 * fileNamesPurchase.add("compra50000inv.txt");
-		 * fileNamesPurchase.add("compra50000alea.txt");
-		 */
-
-		
+//
+//		fileNamesPurchase.add("compra1000ord.txt");
+//		fileNamesPurchase.add("compra1000inv.txt");
+//		fileNamesPurchase.add("compra1000alea.txt");
+//
+//		fileNamesPurchase.add("compra5000ord.txt");
+//		fileNamesPurchase.add("compra5000inv.txt");
+//		fileNamesPurchase.add("compra5000alea.txt");
+//
+//		fileNamesPurchase.add("compra10000ord.txt");
+//		fileNamesPurchase.add("compra10000inv.txt");
+//		fileNamesPurchase.add("compra10000alea.txt");
+//
+//		fileNamesPurchase.add("compra50000ord.txt");
+//		fileNamesPurchase.add("compra50000inv.txt");
+//		fileNamesPurchase.add("compra50000alea.txt");
 
 		for (String fileName : fileNamesPurchase) {
 
@@ -50,9 +46,13 @@ public class AppAVL {
 
 			insertAVL(cadastro, avl);
 
+			System.out.println(avl.getnElem());
+
 			ArrayList<String> cpfs = new ArrayList<String>();
 
-			/*loadArchive(cpfs, pathCpf);
+			loadArchive(cpfs, pathCpf);
+			
+			System.out.println(cpfs.size());
 
 			String content = generateArchiveFinal(avl, cpfs);
 
@@ -67,7 +67,7 @@ public class AppAVL {
 				System.err.println(e.getMessage());
 			}
 
-			System.out.println("runtime file " + fileName + " in MilliSeconds: " + timeSeconds + "; \n\n");*/
+			System.out.println("runtime file " + fileName + " in MilliSeconds: " + timeSeconds + "; \n\n");
 		}
 	}
 
@@ -124,7 +124,4 @@ public class AppAVL {
 		return content;
 	}
 
-	public static void start() {
-
-	}
 }

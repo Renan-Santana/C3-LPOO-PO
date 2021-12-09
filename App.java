@@ -10,25 +10,25 @@ public class App {
 	public static void main(String[] args) throws Exception {
 
 		ArrayList<String> fileNamesPurchase = new ArrayList<>();
-		fileNamesPurchase.add("compra500ord.txt");
+//		fileNamesPurchase.add("compra500ord.txt");
 		fileNamesPurchase.add("compra500inv.txt");
-		/*fileNamesPurchase.add("compra500alea.txt");
-
-		fileNamesPurchase.add("compra1000ord.txt");
-		fileNamesPurchase.add("compra1000inv.txt");
-		fileNamesPurchase.add("compra1000alea.txt");
-
-		fileNamesPurchase.add("compra5000ord.txt");
-		fileNamesPurchase.add("compra5000inv.txt");
-		fileNamesPurchase.add("compra5000alea.txt");
-
-		fileNamesPurchase.add("compra10000ord.txt");
-		fileNamesPurchase.add("compra10000inv.txt");
-		fileNamesPurchase.add("compra10000alea.txt");
-
-		fileNamesPurchase.add("compra50000ord.txt");
-		fileNamesPurchase.add("compra50000inv.txt");
-		fileNamesPurchase.add("compra50000alea.txt");*/
+//		fileNamesPurchase.add("compra500alea.txt");
+//
+//		fileNamesPurchase.add("compra1000ord.txt");
+//		fileNamesPurchase.add("compra1000inv.txt");
+//		fileNamesPurchase.add("compra1000alea.txt");
+//
+//		fileNamesPurchase.add("compra5000ord.txt");
+//		fileNamesPurchase.add("compra5000inv.txt");
+//		fileNamesPurchase.add("compra5000alea.txt");
+//
+//		fileNamesPurchase.add("compra10000ord.txt");
+//		fileNamesPurchase.add("compra10000inv.txt");
+//		fileNamesPurchase.add("compra10000alea.txt");
+//
+//		fileNamesPurchase.add("compra50000ord.txt");
+//		fileNamesPurchase.add("compra50000inv.txt");
+//		fileNamesPurchase.add("compra50000alea.txt");
 
 		ArrayList<Compra> lista = new ArrayList<Compra>();
 		CadCompra cadastro = new CadCompra(lista);
@@ -63,7 +63,7 @@ public class App {
 				System.err.println(e.getMessage());
 			}
 
-			System.out.println("runtime file " + fileName + "in MilliSeconds with ABB: " + timeSeconds + "; \n\n");
+			System.out.println("runtime file " + fileName + " in MilliSeconds with ABB: " + timeSeconds + "; \n\n");
 		}
 	}
 
