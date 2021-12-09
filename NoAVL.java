@@ -44,7 +44,7 @@ public class NoAVL {
 	}
 	@Override
 	public String toString() {
-		String frase = null;
+		String frase = "";
 		for(int i = 0 ; i < compras.size();i++) {
 			frase += compras.get(i).getCliente().getCpf() + "\n";
 		}

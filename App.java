@@ -12,7 +12,7 @@ public class App {
 		ArrayList<String> fileNamesPurchase = new ArrayList<>();
 		fileNamesPurchase.add("compra500ord.txt");
 		fileNamesPurchase.add("compra500inv.txt");
-		fileNamesPurchase.add("compra500alea.txt");
+		/*fileNamesPurchase.add("compra500alea.txt");
 
 		fileNamesPurchase.add("compra1000ord.txt");
 		fileNamesPurchase.add("compra1000inv.txt");
@@ -28,15 +28,15 @@ public class App {
 
 		fileNamesPurchase.add("compra50000ord.txt");
 		fileNamesPurchase.add("compra50000inv.txt");
-		fileNamesPurchase.add("compra50000alea.txt");
+		fileNamesPurchase.add("compra50000alea.txt");*/
 
 		ArrayList<Compra> lista = new ArrayList<Compra>();
 		CadCompra cadastro = new CadCompra(lista);
-		String pathCpf = "C:\\Users\\Renan Santana\\Documents\\C3\\C3-LPOO-PO\\files\\compra.txt";
+		String pathCpf = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\compra.txt";
 
 		for (String fileName : fileNamesPurchase) {
 
-			String pathPurchase = "C:\\Users\\Renan Santana\\Documents\\C3\\C3-LPOO-PO\\files\\" + fileName;
+			String pathPurchase = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\" + fileName;
 
 			Long start = System.currentTimeMillis();
 
@@ -63,7 +63,7 @@ public class App {
 				System.err.println(e.getMessage());
 			}
 
-			System.out.println("runtime file " + fileName + "in MilliSeconds: " + timeSeconds + "; \n\n");
+			System.out.println("runtime file " + fileName + "in MilliSeconds with ABB: " + timeSeconds + "; \n\n");
 		}
 	}
 
@@ -84,12 +84,8 @@ public class App {
 	}
 
 	public static void insertAbb(CadCompra cadastro, Abb abb) {
-		String content = "";
-		Noabb nodeAux = new Noabb();
-
 		for (Compra compra : cadastro.getVetCompra()) {
 			abb.inserir(compra);
-
 		}
 
 	}

@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class AVL {
     private NoAVL raiz;
-    private String chave;
     private ArrayList<Compra> compras;
     private boolean h;
     private int nElem;
@@ -26,10 +25,6 @@ public class AVL {
 
     public int getnElem() {
         return this.nElem;
-    }
-
-    public String getChave() {
-        return this.chave;
     }
 
     private NoAVL pesquisar1(String cpf, NoAVL no) {
@@ -133,15 +128,20 @@ public class AVL {
     }
 
     public NoAVL pesquisar(String cpf) {
-        return pesquisar1(cpf, raiz);
+        return pesquisar(cpf, raiz);
     }
 
     private NoAVL pesquisar(String cpf, NoAVL no) {
-        if (cpf == no.getChave()) {
-        } else if (no.getChave().compareTo(cpf) > 0) {
-            no = pesquisar1(cpf, no.getDir());
-        } else if (no.getChave().compareTo(cpf) < 0) {
-            no = pesquisar1(cpf, no.getEsq());
+        if (no == null) {
+            return null;            
+        } else {
+            if (cpf == no.getChave()) {
+                return no;
+            } else if (cpf.compareTo(no.getChave()) > 0) {
+                no = pesquisar(cpf, no.getDir());
+            } else if (cpf.compareTo(no.getChave()) < 0) {
+                no = pesquisar(cpf, no.getEsq());
+            }
         }
         return no;
     }
@@ -158,16 +158,21 @@ public class AVL {
         if (no == null) {
             NoAVL novo = new NoAVL(compra);
             nElem++;
-            return novo;
+            this.h = true;
+            System.out.println(novo.toString()+"\n\n\n\n");
+            return novo;            
         } else {
             if (compra.getCliente().getCpf().compareTo(no.getChave()) < 0) {
                 no.setEsq(inserir(compra, no.getEsq()));
+                no = this.balancearDir(no);
             } else if (compra.getCliente().getCpf().compareTo(no.getChave()) > 0) {
                 no.setDir(inserir(compra, no.getDir()));
+                no = this.balancearEsq(no);
             } else {
                 no.insereCompra(compra);
             }
         }
+        System.out.println(no.toString()+"\n\n\n\n");
         return no;
     }
 

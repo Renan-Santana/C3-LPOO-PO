@@ -7,64 +7,67 @@ import java.util.Random;
 
 public class AppAVL {
 
-	public static void main(String[] args, AVL avl) throws Exception {
+	public static void main(String[] args) throws Exception {
 
 		ArrayList<String> fileNamesPurchase = new ArrayList<>();
 		fileNamesPurchase.add("compra500ord.txt");
 		fileNamesPurchase.add("compra500inv.txt");
 		fileNamesPurchase.add("compra500alea.txt");
 
-		fileNamesPurchase.add("compra1000ord.txt");
-		fileNamesPurchase.add("compra1000inv.txt");
-		fileNamesPurchase.add("compra1000alea.txt");
+		/*
+		 * fileNamesPurchase.add("compra1000ord.txt");
+		 * fileNamesPurchase.add("compra1000inv.txt");
+		 * fileNamesPurchase.add("compra1000alea.txt");
+		 * 
+		 * fileNamesPurchase.add("compra5000ord.txt");
+		 * fileNamesPurchase.add("compra5000inv.txt");
+		 * fileNamesPurchase.add("compra5000alea.txt");
+		 * 
+		 * fileNamesPurchase.add("compra10000ord.txt");
+		 * fileNamesPurchase.add("compra10000inv.txt");
+		 * fileNamesPurchase.add("compra10000alea.txt");
+		 * 
+		 * fileNamesPurchase.add("compra50000ord.txt");
+		 * fileNamesPurchase.add("compra50000inv.txt");
+		 * fileNamesPurchase.add("compra50000alea.txt");
+		 */
 
-		fileNamesPurchase.add("compra5000ord.txt");
-		fileNamesPurchase.add("compra5000inv.txt");
-		fileNamesPurchase.add("compra5000alea.txt");
-
-		fileNamesPurchase.add("compra10000ord.txt");
-		fileNamesPurchase.add("compra10000inv.txt");
-		fileNamesPurchase.add("compra10000alea.txt");
-
-		fileNamesPurchase.add("compra50000ord.txt");
-		fileNamesPurchase.add("compra50000inv.txt");
-		fileNamesPurchase.add("compra50000alea.txt");
-
-		ArrayList<Compra> lista = new ArrayList<Compra>();
-		CadCompra cadastro = new CadCompra(lista);
-		String pathCpf = "C:\\Users\\j.rsobrinho\\Downloads\\Arquivos Ordenacao\\compra.txt";
+		
 
 		for (String fileName : fileNamesPurchase) {
 
-			String pathPurchase = "C:\\Users\\j.rsobrinho\\Downloads\\Arquivos Ordenacao\\" + fileName;
+			ArrayList<Compra> lista = new ArrayList<Compra>();
+			CadCompra cadastro = new CadCompra(lista);
+			String pathCpf = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\compra.txt";
+
+			String pathPurchase = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\" + fileName;
 
 			Long start = System.currentTimeMillis();
 
 			loadArchive(cadastro, pathPurchase);
 
-			AVL abb = new AVL();
+			AVL avl = new AVL();
 
 			insertAVL(cadastro, avl);
 
-
 			ArrayList<String> cpfs = new ArrayList<String>();
 
-			loadArchive(cpfs, pathCpf);
+			/*loadArchive(cpfs, pathCpf);
 
-			String content = generateArchiveFinal(abb, cpfs);
+			String content = generateArchiveFinal(avl, cpfs);
 
 			Long timeSeconds = (System.currentTimeMillis() - start);
 
 			try {
 				String archive = fileName + "___" + timeSeconds;
-				System.out.print("Gerando arquivo, aguarde!");
+				System.out.print("Gerando arquivo " + archive + ", aguarde!\n");
 				Archive.Write(archive, content);
-				System.out.print("Arquivo " + archive + "gerado");
+				System.out.print("Arquivo " + archive + " gerado\n");
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}
 
-			System.out.println("runtime file " + fileName + "in MilliSeconds: " + timeSeconds + "; \n\n");
+			System.out.println("runtime file " + fileName + " in MilliSeconds: " + timeSeconds + "; \n\n");*/
 		}
 	}
 
@@ -85,12 +88,8 @@ public class AppAVL {
 	}
 
 	public static void insertAVL(CadCompra cadastro, AVL avl) {
-		String content = "";
-		NoAVL nodeAux = new NoAVL();
-
 		for (Compra compra : cadastro.getVetCompra()) {
 			avl.inserir(compra);
-
 		}
 
 	}
