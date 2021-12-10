@@ -27,21 +27,21 @@ public class AVL {
 		return this.nElem;
 	}
 
-	private NoAVL pesquisar1(String cpf, NoAVL no) {
-		if (cpf == no.getChave()) {
-		} else if (no.getChave().compareTo(cpf) > 0) {
-			no = pesquisar1(cpf, no.getDir());
-		} else if (no.getChave().compareTo(cpf) < 0) {
-			no = pesquisar1(cpf, no.getEsq());
-		}
-		return no;
-	}
+//	private NoAVL pesquisar1(String cpf, NoAVL no) {
+//		if (cpf == no.getChave()) {
+//		} else if (no.getChave().compareTo(cpf) > 0) {
+//			no = pesquisar1(cpf, no.getDir());
+//		} else if (no.getChave().compareTo(cpf) < 0) {
+//			no = pesquisar1(cpf, no.getEsq());
+//		}
+//		return no;
+//	}
 
 	private NoAVL rotacaoDireita(NoAVL no) {
 
 		NoAVL temp1, temp2;
 		temp1 = no.getEsq();
-		if (no.getFb() == -1) {
+		if (temp1.getFb() == -1) {
 			no.setEsq(temp1.getDir());
 			temp1.setDir(no);
 			no.setFb((byte) 0);
@@ -50,11 +50,12 @@ public class AVL {
 			temp2 = temp1.getDir();
 			temp1.setDir(temp2.getEsq());
 			temp2.setEsq(temp1);
-			no.setFb((byte) 0);
+			no.setEsq(temp2.getDir());
+			temp2.setDir(no);
 			if (temp2.getFb() == -1)
 				no.setFb((byte) 1);
 			else
-				no.setFb((byte) 1);
+				no.setFb((byte) 0);
 			if (temp2.getFb() == 1)
 				temp1.setFb((byte) -1);
 			else
@@ -69,7 +70,7 @@ public class AVL {
 	private NoAVL rotacaoEsquerda(NoAVL no) {
 		NoAVL temp1, temp2;
 		temp1 = no.getDir();
-		if (no.getFb() == -1) {
+		if (temp1.getFb() == 1) {
 			no.setDir(temp1.getEsq());
 			temp1.setEsq(no);
 			no.setFb((byte) 0);
@@ -78,7 +79,8 @@ public class AVL {
 			temp2 = temp1.getEsq();
 			temp1.setEsq(temp2.getDir());
 			temp2.setDir(temp1);
-			no.setFb((byte) 0);
+			no.setDir(temp2.getEsq());
+			temp2.setEsq(no);
 			if (temp2.getFb() == 1)
 				no.setFb((byte) -1);
 			else
@@ -106,7 +108,7 @@ public class AVL {
 				no.setFb((byte) -1);
 				break;
 			case -1:
-				no = this.rotacaoEsquerda(no);
+				no = this.rotacaoDireita(no);
 			}
 		return no;
 	}
@@ -119,10 +121,10 @@ public class AVL {
 				h = false;
 				break;
 			case 0:
-				no.setFb((byte) -1);
+				no.setFb((byte) 1);
 				break;
 			case 1:
-				no = this.rotacaoDireita(no);
+				no = this.rotacaoEsquerda(no);
 			}
 		return no;
 	}
@@ -147,7 +149,7 @@ public class AVL {
 	}
 
 	public ArrayList<Compra> getCompras(String cpf) {
-		return pesquisar1(cpf, raiz).getCompras();
+		return pesquisar(cpf, raiz).getCompras();
 	}
 
 	public void inserir(Compra compra) {
@@ -175,6 +177,7 @@ public class AVL {
 				no = this.balancearEsq(no);
 			} else {
 				no.insereCompra(compra);
+				this.h = false;
 			}
 		}
 		// System.out.println(no.toString());

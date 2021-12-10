@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.io.*;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -10,33 +9,37 @@ public class App {
 	public static void main(String[] args) throws Exception {
 
 		ArrayList<String> fileNamesPurchase = new ArrayList<>();
-//		fileNamesPurchase.add("compra500ord.txt");
-		fileNamesPurchase.add("compra500inv.txt");
-//		fileNamesPurchase.add("compra500alea.txt");
-//
-//		fileNamesPurchase.add("compra1000ord.txt");
-//		fileNamesPurchase.add("compra1000inv.txt");
-//		fileNamesPurchase.add("compra1000alea.txt");
-//
-//		fileNamesPurchase.add("compra5000ord.txt");
-//		fileNamesPurchase.add("compra5000inv.txt");
-//		fileNamesPurchase.add("compra5000alea.txt");
-//
-//		fileNamesPurchase.add("compra10000ord.txt");
-//		fileNamesPurchase.add("compra10000inv.txt");
-//		fileNamesPurchase.add("compra10000alea.txt");
-//
-//		fileNamesPurchase.add("compra50000ord.txt");
-//		fileNamesPurchase.add("compra50000inv.txt");
-//		fileNamesPurchase.add("compra50000alea.txt");
+		fileNamesPurchase.add("compra500ord");
+		fileNamesPurchase.add("compra500inv");
+		fileNamesPurchase.add("compra500alea");
 
-		ArrayList<Compra> lista = new ArrayList<Compra>();
-		CadCompra cadastro = new CadCompra(lista);
-		String pathCpf = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\compra.txt";
+		fileNamesPurchase.add("compra1000ord");
+		fileNamesPurchase.add("compra1000inv");
+		fileNamesPurchase.add("compra1000alea");
+
+		fileNamesPurchase.add("compra5000ord");
+		fileNamesPurchase.add("compra5000inv");
+		fileNamesPurchase.add("compra5000alea");
+
+		fileNamesPurchase.add("compra10000ord");
+		fileNamesPurchase.add("compra10000inv");
+		fileNamesPurchase.add("compra10000alea");
+
+		fileNamesPurchase.add("compra50000ord");
+		fileNamesPurchase.add("compra50000inv");
+		fileNamesPurchase.add("compra50000alea");
+
+		String resultFinal = "";
 
 		for (String fileName : fileNamesPurchase) {
 
-			String pathPurchase = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\" + fileName;
+			ArrayList<Compra> lista = new ArrayList<Compra>();
+
+			CadCompra cadastro = new CadCompra(lista);
+
+			String pathCpf = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\compra.txt";
+
+			String pathPurchase = "C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\files\\" + fileName + ".txt";
 
 			Long start = System.currentTimeMillis();
 
@@ -57,14 +60,26 @@ public class App {
 			Long timeSeconds = (System.currentTimeMillis() - start);
 
 			try {
-				String archive = fileName + "___" + timeSeconds;
-				Archive.Write(archive, content);
+				String archive = fileName + "___" + timeSeconds + "___ABB.txt";
+				Archive.Write("C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\fileResults\\withAbb\\" + archive,
+						content);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}
 
-			System.out.println("runtime file " + fileName + " in MilliSeconds with ABB: " + timeSeconds + "; \n\n");
+			String result = "runtime file " + fileName + " in MilliSeconds with ABB: " + timeSeconds + "; \n\n";
+			System.out.println(result);
+			resultFinal += result;
 		}
+
+		try {
+			Archive.Write(
+					"C:\\Users\\12000226\\Documents\\C3\\C3-LPOO-PO\\fileResults\\resultFinal\\Resultados ABB.txt",
+					resultFinal);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+
 	}
 
 	public static void loadArchive(CadCompra cadastro, String path) {
@@ -124,7 +139,4 @@ public class App {
 		return content;
 	}
 
-	public static void start() {
-
-	}
 }
