@@ -153,7 +153,8 @@ public class telaApp extends JFrame {
 
 					String result = "runtime file " + fileTxt + " in MilliSeconds with ABB: " + timeSeconds + "; \n\n";
 					textResultFile.setText(result);
-					//JOptionPane.showMessageDialog(null, result, "Resultado com ABB", JOptionPane.INFORMATION_MESSAGE);
+					// JOptionPane.showMessageDialog(null, result, "Resultado com ABB",
+					// JOptionPane.INFORMATION_MESSAGE);
 				}
 
 				else if (estruturaTxt.contains("AVL")) {
@@ -191,10 +192,11 @@ public class telaApp extends JFrame {
 
 					String result1 = "runtime file " + fileTxt + " in MilliSeconds with AVL: " + timeSeconds1 + " \n\n";
 					textResultFile.setText(result1);
-					//JOptionPane.showMessageDialog(null, result1, "Resultado com AVL", JOptionPane.INFORMATION_MESSAGE);
+					// JOptionPane.showMessageDialog(null, result1, "Resultado com AVL",
+					// JOptionPane.INFORMATION_MESSAGE);
 
 				} else {
-					JOptionPane.showMessageDialog(null, "Implementar o HASHING");
+					textResultFile.setText("Ainda falta implementar a HASHING");
 
 				}
 
@@ -219,7 +221,7 @@ public class telaApp extends JFrame {
 		btnExit.setBackground(Color.GRAY);
 		btnExit.setBounds(317, 221, 167, 27);
 		contentPane.add(btnExit);
-		
+
 		textResultFile = new JTextField();
 		textResultFile.setHorizontalAlignment(SwingConstants.CENTER);
 		textResultFile.setForeground(Color.WHITE);
