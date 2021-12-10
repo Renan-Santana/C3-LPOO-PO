@@ -11,24 +11,24 @@ public class AppAVL {
 
 		ArrayList<String> fileNamesPurchase = new ArrayList<>();
 		fileNamesPurchase.add("compra500ord");
-		fileNamesPurchase.add("compra500inv");
-		fileNamesPurchase.add("compra500alea");
-
-		fileNamesPurchase.add("compra1000ord");
-		fileNamesPurchase.add("compra1000inv");
-		fileNamesPurchase.add("compra1000alea");
-
-		fileNamesPurchase.add("compra5000ord");
-		fileNamesPurchase.add("compra5000inv");
-		fileNamesPurchase.add("compra5000alea");
-
-		fileNamesPurchase.add("compra10000ord");
-		fileNamesPurchase.add("compra10000inv");
-		fileNamesPurchase.add("compra10000alea");
-
-		fileNamesPurchase.add("compra50000ord");
-		fileNamesPurchase.add("compra50000inv");
-		fileNamesPurchase.add("compra50000alea");
+//		fileNamesPurchase.add("compra500inv");
+//		fileNamesPurchase.add("compra500alea");
+//
+//		fileNamesPurchase.add("compra1000ord");
+//		fileNamesPurchase.add("compra1000inv");
+//		fileNamesPurchase.add("compra1000alea");
+//
+//		fileNamesPurchase.add("compra5000ord");
+//		fileNamesPurchase.add("compra5000inv");
+//		fileNamesPurchase.add("compra5000alea");
+//
+//		fileNamesPurchase.add("compra10000ord");
+//		fileNamesPurchase.add("compra10000inv");
+//		fileNamesPurchase.add("compra10000alea");
+//
+//		fileNamesPurchase.add("compra50000ord");
+//		fileNamesPurchase.add("compra50000inv");
+//		fileNamesPurchase.add("compra50000alea");
 
 		String resultFinal = "";
 
